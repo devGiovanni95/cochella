@@ -30,4 +30,17 @@ public class EventoService {
     public Mono<Void> excluir(Long id) {
         return repositorio.findById(id).flatMap(repositorio::delete);
     }
+
+    public Mono<EventoDto> alterar(Long id, EventoDto dto) {
+        return repositorio.findById(id)
+                .flatMap(
+                    eventoExistente -> {
+                        eventoExistente.setTipo(dto.tipo());
+                        eventoExistente.setNome(dto.nome());
+                        eventoExistente.setData(dto.data());
+                        eventoExistente.setDescricao(dto.descricao());
+                        return repositorio.save(eventoExistente);
+                    }
+                ).map(EventoDto::toDto);
+    }
 }
