@@ -14,11 +14,11 @@ import java.awt.*;
 public class EventoController {
 
     @Autowired
-    private EventoRepository repositorio;
+    private EventoService servico;
 
     //estou produzindo um fluxo de dados de texto
     @GetMapping(produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<Evento> obterTodos(){
-        return repositorio.findAll();
+    public Flux<EventoDto> obterTodos(){
+        return servico.obtertodos();
     }
 }
