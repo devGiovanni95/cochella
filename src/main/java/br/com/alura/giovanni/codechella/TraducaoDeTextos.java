@@ -20,7 +20,7 @@ public class TraducaoDeTextos {
         req.add("target_lang", idioma);
 
         return webClient.post()
-                .header("Autorization", "DeepL-Auth-Key " + System.getenv("DEEPL_APIKEY"))
+                .header("Authorization", "DeepL-Auth-Key " + System.getenv("DEEPL_APIKEY"))
                 .body(BodyInserters.fromFormData(req))
                 .retrieve()
                 .bodyToMono(Traducao.class)

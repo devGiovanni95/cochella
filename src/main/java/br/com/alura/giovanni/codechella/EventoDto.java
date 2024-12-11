@@ -8,7 +8,7 @@ public record EventoDto(Long id,
                         LocalDate data,
                         String descricao) {
 
-    public static EventoDto toDto(Evento evento){
+    public static EventoDto  toDto(Evento evento){
         return new EventoDto( evento.getId(),
                               evento.getTipo(),
                               evento.getNome(),
